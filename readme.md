@@ -9,7 +9,7 @@
 `docker-compose exec app ./vendor/bin/phpunit tests/` - to run tests
 
 ## Dependencies:
-I only used `Guzzle` for performing API requests and `PHPUnit` for testing the code.
+I only used `Guzzle` for performing HTTP requests to SM-APi and `PHPUnit` for testing the code.
 But for real-word applications it is worth looking at popular PHP libraries.
 
 ## Api routes:
