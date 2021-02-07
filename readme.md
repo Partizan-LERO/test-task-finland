@@ -6,7 +6,16 @@
 
 `docker-compose exec app composer install` - to install all needed dependencies
 
+Copy `.env.example` to `.env` and change data according to your needs
+
 `docker-compose exec app ./vendor/bin/phpunit tests/` - to run tests
+
+______________________________
+To fill the database with posts, run:
+
+`docker-compose exec app php console.php parse_posts_from_sm_api`
+
+In the real-world application this command is a great candidate to be run by schedule to update the data.
 
 ## Dependencies:
 I only used `Guzzle` for performing HTTP requests to SM-API and `PHPUnit` for testing the code.

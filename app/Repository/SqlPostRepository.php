@@ -33,12 +33,6 @@ CREATE TABLE IF NOT EXISTS posts (
 SQL);
     }
 
-    public function truncate()
-    {
-        $this->pdo->exec('DROP TABLE posts;');
-        $this->initSchema();
-    }
-
     /**
      * @param string $userId
      * @return Post[]|array

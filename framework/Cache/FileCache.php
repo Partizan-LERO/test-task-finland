@@ -22,6 +22,9 @@ class FileCache implements ICache
         if ($this->db === null) {
             throw new UnknownCacheDriverException();
         }
+        if (!file_exists($this->db)) {
+            file_put_contents(json_encode([], JSON_PRETTY_PRINT), $this->db);
+        }
     }
 
     private function getData()

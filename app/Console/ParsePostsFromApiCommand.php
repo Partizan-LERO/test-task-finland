@@ -9,6 +9,7 @@ use App\Repository\SqlPostRepository;
 use App\Service\ApiService;
 use DateTime;
 use Exception;
+use Framework\Cache\Cache;
 use Framework\Console\ConsoleOutput;
 use Framework\Console\ICommand;
 use Framework\Exceptions\CannotInstantiateClassException;
@@ -36,8 +37,11 @@ class ParsePostsFromApiCommand implements ICommand
         $app = new AppServiceProvider();
 
         $this->postRepository = $app->get(SqlPostRepository::class);
+
         /** @var ApiService $apiService */
         $apiService = $app->get(ApiService::class);
+
+        $cache = new Cache();
 
         ConsoleOutput::info('Start requesting and loading data from API to DB...');
 
@@ -60,6 +64,10 @@ class ParsePostsFromApiCommand implements ICommand
         }
 
         --$page;
+
+        if ($inserts > 0 || $updates > 0) {
+            $cache->flush();
+        }
 
         ConsoleOutput::success('Data was loaded successfully! There were handled ' . $page . ' api pages.');
         ConsoleOutput::success("There were $inserts inserts and $updates updated in DB");

@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . './vendor/autoload.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
 use App\Console\Handler;
 
