@@ -1,0 +1,6 @@
+.idea
+.env
+vendor/
+analytical_storage.sqlite
+processed_data.json
+
